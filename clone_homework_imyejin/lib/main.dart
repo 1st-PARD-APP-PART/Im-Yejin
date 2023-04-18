@@ -1,5 +1,8 @@
+import 'package:clone_homework_imyejin/main.dart';
 import 'package:flutter/material.dart';
-import 'data.dart'; // data.dart의 정보를 import 한다.
+
+import 'Screen/Signup.dart';
+import 'Screen/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,56 +18,84 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyPage(),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyPage extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
   @override
-  _MyPageState createState() => _MyPageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyPageState extends State<MyPage> {
-  Future<List<String>> _getData() async {
-    // 1. Future를 통해 data.dart의 리스트 정보를 가져올 때 async, await와 Future.delayed를 활용하여 10초의 정지 시간을 갖도록 한다.
-    // 2. 10초가 지난 후 리스트 정보를 가져왔다면 then()을 활용하여 console창에 ‘출력 완료’ 라는 text가 출력하도록 만들어준다.
-    return await Future.delayed(const Duration(seconds: 10), () {
-      //10초 정지
-      return myData;
-    }).then((val) {
-      print('출력완료');
-      return val;
-    });
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My Page'),
-      ),
-      body: FutureBuilder<List<String>>(
-          future: _getData(),
-          builder: // 3. FutureBuilder<List<String>>와 Listview.Builder를 활용하여 아래 ListTile 코드를 통해 결과 화면과 같은 화면을 출력한다.
-              (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
-            if (snapshot.hasData) {
-              //data 받았을 때
-              return ListView.builder(
-                itemCount: snapshot.data?.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(snapshot.data![index]),
-                  );
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 285,
+            ),
+            Image.asset(
+              'assets/carrot.png',
+              height: 193,
+              width: 193,
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              '당신 근처의 당근마켓',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            SizedBox(
+              height: 14,
+            ),
+            Text(
+              '중고 거래부터 동네 정보까지,\n지금 내 동네를 선택하고 시작해보세요!',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 120,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()));
                 },
-              );
-            } else {
-              //data 못받았을 때
-              return const Center(
-                child: Text('Loading...'),
-              );
-            }
-          }),
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(354, 56), primary: Color(0XFFFF7E36)),
+                child: const Text('시작하기')),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('이미 계정이 있나요?', style: TextStyle(color: Colors.black)),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
+                    child: Text(
+                      '로그인',
+                      style: TextStyle(color: Color(0XFFFF7E36)),
+                    )),
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
 }

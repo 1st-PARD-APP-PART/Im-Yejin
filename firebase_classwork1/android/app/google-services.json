@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "191905636655",
+    "project_id": "pard4-33857",
+    "storage_bucket": "pard4-33857.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191905636655:android:c0fcf045f2f948044b01da",
+        "android_client_info": {
+          "package_name": "com.example.firebase_classwork1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191905636655-sopckblp5c2uh1nmp2kco53t07vhu7g6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNT1opc-VbKx_b_wm3bRNB-cHXrnS2-JY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191905636655-sopckblp5c2uh1nmp2kco53t07vhu7g6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
